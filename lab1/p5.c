@@ -16,8 +16,8 @@ void obtenerMinMax(int size, int *array, int *min, int *max) {
 
 	for(unsigned int i = 0; i < size; i++) {
 
-		if(array[i] < num_min) num_min = array[i];
-		if(array[i] > num_max) num_max = array[i];
+		if (array[i] < num_min) num_min = array[i];
+		if (array[i] > num_max) num_max = array[i];
 	}
 
 	*min = num_min;
@@ -39,7 +39,7 @@ int main(int argo, char *argv[]) {
 	char **s;
 	s = (char**)malloc((argo - 1) * sizeof(char*));  // array to store pointers to strings
 
-	for(unsigned int i = 1; i < argo; i++) {
+	for (unsigned int i = 1; i < argo; i++) {
 		// copy the string
 		s[i-1] = (char*)malloc(strlen(argv[1] + 1));  // +1 to take into account \0
 		strcpy(s[i-1], argv[i]);
@@ -62,8 +62,12 @@ int main(int argo, char *argv[]) {
 	printf("El mínimo es: %i\n", min);
 	printf("El máximo es: %i\n", max);
 
+	// cleanup
+	for (unsigned int i; i < (argo - 1); i++) {
+		free(s[i]);
+	}
 
-	free(v);  // REMEMBER THIS
+	free(v);
 
 	return 0;
 }

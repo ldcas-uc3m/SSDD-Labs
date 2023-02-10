@@ -1,5 +1,5 @@
 ## Ejercicio 1
-Escriba un programa (p1.c) que acepte en la línea de mandatos un número indeterminado de argumentos. El programa debe imprimir cada argumento en una línea diferente. El argumento se imprimirá como una cadena de caracteres.  
+Escriba un programa (`p1.c`) que acepte en la línea de mandatos un número indeterminado de argumentos. El programa debe imprimir cada argumento en una línea diferente. El argumento se imprimirá como una cadena de caracteres.  
 Si el programa se ejecuta de la siguiente forma:
 ```
 ./p1 uno 4 hola tres 1245
@@ -55,7 +55,7 @@ Argumento 3 = Error de conversión.
 ```
 
 ## Ejercicio 3
-Modifique el programa anterior (el nuevo programa será `p3.c`) de forma que los argumentos pasados en la línea de mandatos y convertidos a enteros se almacenen en un array creado de forma dinámica. El programa debe incluir una función denominada `ObtenerMinMax()`, que reciba el array y obtenga el valor mínimo y máximo del array.  
+Modifique el programa anterior (el nuevo programa será `p3.c`) de forma que los argumentos pasados en la línea de mandatos y convertidos a enteros se almacenen en un array creado de forma dinámica. El programa debe incluir una función denominada `obtenerMinMax()`, que reciba el array y obtenga el valor mínimo y máximo del array.  
 
 ## Ejercicio 4
 Modifique el programa anterior (el nuevo programa será `p4.c`) de forma que los argumentos pasados en la línea de mandatos tratados como cadenas de caracteres se almacenen en un array de forma dinámica. En este caso se creará un array dinámico de cadenas de caracteres.
