@@ -27,7 +27,7 @@ void obtenerMinMax(int size, int* array, int* min, int* max) {
 
 int main(int argc, char* argv[]) {
 	// ten en cuenta que **argv es equivalente a *argv[] 
-	printf("Programa P4\n");
+	printf("--Programa P4--\n");
 
 	// create (dynamically) an array to save the arguments
 	int* v;

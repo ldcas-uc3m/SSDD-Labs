@@ -1,3 +1,5 @@
+# Laboratorio 1: Introducción a C
+
 ## Ejercicio 1
 Escriba un programa (`p1.c`) que acepte en la línea de mandatos un número indeterminado de argumentos. El programa debe imprimir cada argumento en una línea diferente. El argumento se imprimirá como una cadena de caracteres.  
 Si el programa se ejecuta de la siguiente forma:

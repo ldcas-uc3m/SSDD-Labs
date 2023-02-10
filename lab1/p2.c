@@ -3,7 +3,7 @@
 
 int main(int argc, char* argv[]) {
 	// ten en cuenta que **argv es equivalente a *argv[] 
-	printf("Programa P2\n");
+	printf("--Programa P2--\n");
 
 	for (unsigned int i = 1; i < argc; i++) {
 		char* end;  // for error detection

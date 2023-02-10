@@ -26,19 +26,22 @@ int set(List* l, char* key, int value){
     /*
     Inserta un nuevo par (key, value) en la lista l.
     La inserción se hace al principio de la lista.
+    No comprueba si hay keys repetidas.
     */
 
     struct Node* ptr;
     ptr = (struct Node*) malloc(sizeof(struct Node));  // new element
     
-    if (ptr == NULL) 
+    if (ptr == NULL) {
+        perror("malloc() fail\n");
         return -1;
+    }
 
     // allocate memory for key
     ptr->key = (char*) malloc(strlen(key) + 1);  // new string
     if (ptr->key == NULL) {  // failed allocation
         free(ptr);
-
+        perror("malloc() fail\n");
         return -1;
     }
 
@@ -76,6 +79,7 @@ int get(List l, char* key, int* value) {
             aux = aux->next;
         }
     }
+    perror("Element not found\n");
     return -1;  // not found
 }
 
@@ -135,6 +139,7 @@ int deleteNode(List* l, char* key) {
             aux = aux->next;
         }
     }
+    perror("Element not found\n");
     return -1;  // not found
 }
 

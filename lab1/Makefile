@@ -1,8 +1,8 @@
-BIN_FILES  = p4
-
+BIN_FILES  = p1 p2 p3 p4 p5 p6
+VPATH = lib  # path with source files not found in current dir
 CC = gcc
 
-CPPFLAGS = -I$(INSTALL_PATH)/include -Wall
+CFLAGS = -g -I$(INSTALL_PATH)/include -Wall
 
 LDFLAGS = -L$(INSTALL_PATH)/lib/
 #LDLIBS = -lpthread -lm
@@ -15,9 +15,6 @@ all: $(BIN_FILES)
 p1: p1.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
 	
-p2: p2.o
-	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
-		
 p2: p2.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
 

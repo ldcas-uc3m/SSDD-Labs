@@ -24,8 +24,38 @@ void obtenerMinMax(int size, int* array, int* min, int* max) {
 }
 
 
+int comparar(const void* a, const void* b) {
+	/*
+	Compara dos enteros, para ser usado con qsort de menor a mayor.
+	- Si *a < *b retorna un número negativo
+	- Si *a == *b retorna 0
+	- Si *a > *b retorna un número positivo
+	*/
+
+	int* n1;
+	int* n2;
+
+	n1 = (int*) a;
+	n2 = (int*) b;
+
+	return (*n1 - *n2);
+}
+
+
+void printVector(int* vector, int size) {
+	printf("[");
+	for (unsigned int i = 0; i < size; i++) {
+		printf ("%d", vector[i]);
+		if (i < size - 1) {
+			printf(", ");
+		}
+	}
+	printf ("]\n");
+}
+
+
 int main(int argc, char* argv[]) {
-	printf("--Programa P3--\n");
+	printf("--Programa P6--\n");
 
 	// create (dynamically) an array to save the arguments
 	int* v;
@@ -51,6 +81,11 @@ int main(int argc, char* argv[]) {
 	printf("El mínimo es: %i\n", min);
 	printf("El máximo es: %i\n", max);
 
+	// sort
+	qsort(v, argc - 1, sizeof(int), &comparar);
+	
+	printf("Ordenado: ");
+	printVector(v, argc - 1);
 
 	free(v);  // REMEMBER THIS
 
