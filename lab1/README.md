@@ -22,7 +22,7 @@ Para convertir una cadena a un número entero se puede utilizar la función de b
 ```
 int atoi(const char *nptr);
 ```
-Esta función convierte la cadena apuntada por nptr a su valor entero correspondiente. El problema de esta función es que no detecta errores (por ejemplo, cuando se intenta convertir una cadena que no representa un número entero), así que en su lugar podemos utilizar mejor la función equivalente:
+Esta función convierte la cadena apuntada por `nptr` a su valor entero correspondiente. El problema de esta función es que no detecta errores (por ejemplo, cuando se intenta convertir una cadena que no representa un número entero), así que en su lugar podemos utilizar mejor la función equivalente:
 ```
 char *end;
 strtol(nptr, &end, 10);
@@ -31,7 +31,7 @@ strtol(nptr, &end, 10);
 En caso de que la conversión no se haya podido realizar, el puntero end no habrá avanzado hasta el final. De esta forma se puede detectar el error de la siguiente forma:
 ```
 if (*end != ‘\0’) {
-// error en la conversión
+    // error en la conversión
 }
 ```
 Si el programa se ejecuta de la siguiente forma:
@@ -63,8 +63,8 @@ Modifique el programa anterior (el nuevo programa será `p3.c`) de forma que los
 Modifique el programa anterior (el nuevo programa será `p4.c`) de forma que los argumentos pasados en la línea de mandatos tratados como cadenas de caracteres se almacenen en un array de forma dinámica. En este caso se creará un array dinámico de cadenas de caracteres.
 
 ## Ejercicio 5
-Modifique los programas anteriores (el nuevo programa será `p5.c`) de forma que los argumentos pasados en la línea de mandatos se almacenen en una lista enlazada. En cada elemento de la lista se almacenará el valor numérico y el valor como cadena de caracteres.
+Modifique los programas anteriores (el nuevo programa será `p5.c`) de forma que los argumentos pasados en la línea de mandatos se almacenen en una lista enlazada. En cada elemento de la lista se almacenará el valor numérico y el valor como cadena de caracteres.  
+Puede crear una librería para ello (`lib/linked_list.h`).
 
 ## Ejercicio 6
-Modifique el programa del ejercicio 3 (el nuevo programa será `p6.c`) de forma que ordene de
-menor a mayor los elementos del array utilizando la función de biblioteca `qsort()`.
+Modifique el programa del [ejercicio 3](#ejercicio-3) (el nuevo programa será `p6.c`) de forma que ordene de menor a mayor los elementos del array utilizando la función de biblioteca `qsort()`.
