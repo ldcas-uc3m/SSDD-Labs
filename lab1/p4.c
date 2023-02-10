@@ -3,7 +3,7 @@
 #include <string.h>
 
 
-void obtenerMinMax(int size, int *array, int *min, int *max) {
+void obtenerMinMax(int size, int* array, int* min, int* max) {
 	// obtiene el mínimo y el máximo de un array, guardándolo en
 	// min y max, variables definidas en el main()
 
@@ -25,24 +25,24 @@ void obtenerMinMax(int size, int *array, int *min, int *max) {
 }
 
 
-int main(int argo, char *argv[]) {
+int main(int argc, char* argv[]) {
 	// ten en cuenta que **argv es equivalente a *argv[] 
 	printf("Programa P4\n");
 
 	// create (dynamically) an array to save the arguments
-	int *v;
-	v = (int*) malloc((argo - 1) * sizeof(int));
+	int* v;
+	v = (int*) malloc((argc - 1) * sizeof(int));
 
 	// create (dynamically) an array to save the string arguments
-	char **s;
-	s = (char**) malloc((argo - 1) * sizeof(char*));  // array to store pointers to strings
+	char** s;
+	s = (char**) malloc((argc - 1) * sizeof(char*));  // array to store pointers to strings
 
-	for (unsigned int i = 1; i < argo; i++) {
+	for (unsigned int i = 1; i < argc; i++) {
 		// copy the string
 		s[i-1] = (char*) malloc(strlen(argv[1] + 1));  // +1 to take into account \0
 		strcpy(s[i-1], argv[i]);
 
-		char *end;  // for error detection
+		char* end;  // for error detection
 		long int converted_arg = strtol(s[i-1], &end, 10);
 		// error detection for strtol
 		if (*end != '\0') {
@@ -55,13 +55,13 @@ int main(int argo, char *argv[]) {
 	// print min/max
 	int min, max;
 
-	obtenerMinMax(argo - 1, v, &min, &max);
+	obtenerMinMax(argc - 1, v, &min, &max);
 
 	printf("El mínimo es: %i\n", min);
 	printf("El máximo es: %i\n", max);
 
 	// cleanup
-	for (unsigned int i; i < (argo - 1); i++) {
+	for (unsigned int i; i < (argc - 1); i++) {
 		free(s[i]);
 	}
 

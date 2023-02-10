@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 
-void obtenerMinMax(int size, int *array, int *min, int *max) {
+void obtenerMinMax(int size, int* array, int* min, int* max) {
 	// obtiene el mínimo y el máximo de un array, guardándolo en
 	// min y max, variables definidas en el main()
 
@@ -24,16 +24,15 @@ void obtenerMinMax(int size, int *array, int *min, int *max) {
 }
 
 
-int main(int argo, char *argv[]) {
-	// ten en cuenta que **argv es equivalente a *argv[] 
+int main(int argc, char* argv[]) {
 	printf("Programa P3\n");
 
 	// create (dynamically) an array to save the arguments
-	int *v;
-	v = (int*) malloc((argo - 1) * sizeof(int));
+	int* v;
+	v = (int*) malloc((argc - 1) * sizeof(int));
 
-	for (unsigned int i = 1; i < argo; i++) {
-		char *end;  // for error detection
+	for (unsigned int i = 1; i < argc; i++) {
+		char* end;  // for error detection
 
 		long int converted_arg = strtol(argv[i], &end, 10);
 		// error detection for strtol
@@ -47,7 +46,7 @@ int main(int argo, char *argv[]) {
 	// print min/max
 	int min, max;
 
-	obtenerMinMax(argo - 1, v, &min, &max);
+	obtenerMinMax(argc - 1, v, &min, &max);
 
 	printf("El mínimo es: %i\n", min);
 	printf("El máximo es: %i\n", max);
