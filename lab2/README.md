@@ -6,7 +6,7 @@ Se dispone del código del siguiente programa (`p1.c`), así como un archivo `Ma
 make p1
 ```
 Este programa crea dos procesos ligeros, cada uno de los cuales ejecuta una serie de iteraciones en las que el thread se bloquea un tiempo aleatorio entre 0 y 100 ms e imprime su identificador y el número de la iteración.  
-Compile y ejecute el código anterior varias veces. Identifique los problemas de ejecución que observa
+Compile y ejecute el código anterior varias veces. Identifique los problemas de ejecución que observa.
 
 ## Ejercicio 2
 Modifique el programa anterior de forma que cada uno de los threads imprima su identificador 2 (0 o 1) de forma correcta. El nombre de este programa será `p2.c`.  

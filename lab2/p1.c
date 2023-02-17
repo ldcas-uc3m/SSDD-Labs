@@ -36,11 +36,12 @@ int main(int argc, char *argv[])
 
 	pthread_attr_init(&attr);
 
-	for (j = 0; j < NUM_THREADS; j++)
+	for (j = 0; j < NUM_THREADS; j++) {
 		if (pthread_create(&thid[j], NULL, (void *) funcion, &j) == -1){
 			printf("Error al crear los threads\n");
 			exit(0);
 		}
+	}
 
 	for (j = 0; j < NUM_THREADS; j++)
 		pthread_join(thid[j], NULL);
