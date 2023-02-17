@@ -24,7 +24,7 @@ El nombre de este programa será `p3.c`.
 
 
 ## Ejercicio 4
-En el material de apoyo se proporciona el código de un programa (pi.c) que calcula el número pi mediante el cálculo de la siguiente integral definida con el método de los trapecios:  
+En el material de apoyo se proporciona el código de un programa (`pi.c`) que calcula el número pi mediante el cálculo de la siguiente integral definida con el método de los trapecios:  
 $\int_{0}^{1}{\sqrt{4 \cdot (1 - x^2)}}\ dx = \frac{\pi}{2}$
 
 El programa `pi2.c` es una versión similar que está pensada como un primer paso para paralelizar el código y que pueda ser ejecutada por varios threads. Modifique el código `pi2.c` para que el cálculo sea hecho por una serie de threads en paralelo. El programa permite obtener el tiempo de ejecución. 
