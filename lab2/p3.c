@@ -49,7 +49,7 @@ void funcion(int* id) {
 		// give turn to next one
 		pthread_mutex_lock(&mutex_turn);
 
-		turn = (turn + 1) % NUM_THREADS;
+		turn = (mid + 1) % NUM_THREADS;
 
 		pthread_cond_broadcast(&c_turn);  // signal all sleeping threads
 		pthread_mutex_unlock(&mutex_turn);
