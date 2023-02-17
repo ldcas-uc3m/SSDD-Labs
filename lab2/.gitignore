@@ -1,0 +1,6 @@
+# exclude all executable files
+*
+!*.*
+!*/
+
+*.o
