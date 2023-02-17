@@ -25,10 +25,10 @@ unsigned int turn = 0;  // turno de hilo i
 void funcion(int* id) {
 	int s;
 	double k;
-	int mid = *id;  // cada thread recibe un número (0 o 1)
 
 	// mutex logic
 	pthread_mutex_lock(&mutex_id);
+	int mid = *id;  // cada thread recibe un número (0 o 1)
 	copiado = true;  // update conditional variable
 	pthread_cond_signal(&c_id);  // signal all sleeping threads
 	pthread_mutex_unlock(&mutex_id);

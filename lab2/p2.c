@@ -7,7 +7,7 @@
 #include <stdbool.h>
 
 
-#define NUM_THREADS	 2
+#define NUM_THREADS	 5
 #define ITER 		10
 
 
@@ -20,10 +20,10 @@ bool copiado = false;  // variable condicional de control
 void funcion(int* id) {
 	int s;
 	double k;
-	int mid = *id;  // cada thread recibe un número (0 o 1)
 
 	// mutex logic
 	pthread_mutex_lock(&mutex);
+	int mid = *id;  // cada thread recibe un número (0 o 1)
 	copiado = true;  // update conditional variable
 	pthread_cond_signal(&c);  // signal one sleeping thread
 	pthread_mutex_unlock(&mutex);
