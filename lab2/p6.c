@@ -12,6 +12,8 @@
 
 int	num_lectores;
 int	recurso = 0;
+unsigned long int thd_id;
+
 
 // sync
 pthread_mutex_t	mutex_recurso;
@@ -19,23 +21,25 @@ pthread_mutex_t	mutex_lectores;
 pthread_cond_t cond_first;
 
 
+// FIXME: escritor ejecuta sin haber esperado a que todos lean
+
 void lector(void) {
 	int j;
 	int s;
 	double k;
-	unsigned long int thd_id;
 
 	for (j = 0; j < ITER; j++) {
 		k = (double) rand_r((unsigned int*) &s) / RAND_MAX;	
-		usleep((int) 1+(k * 6000000)); // duerme entre 1 y 9 s
+		usleep((int) 1 + (k * 6000000)); // duerme entre 1 y 9 s
 
-		// create new reader
+		// add one to reader count
 		if (pthread_mutex_lock(&mutex_lectores) != 0) {
 			printf(".......  Error en mutex lock 1 \n");
 		}
 
 		num_lectores++;
 
+		// read resource
 		if (num_lectores == 1) {  // first reader
 			thd_id = (unsigned long int) pthread_self();
 			printf("Primer %lu \n", thd_id);
@@ -47,11 +51,10 @@ void lector(void) {
 		}
 
 
-		// read resource
 		printf("       Ejecuta el lector %lu lee  %d \n", (unsigned long int) pthread_self(), recurso);
 
 
-		// destroy reader
+		// remove one from reader count
 		if (pthread_mutex_lock(&mutex_lectores) != 0) {
 			printf(".......  Error en mutex lock 2 \n");
 		}
@@ -60,11 +63,11 @@ void lector(void) {
 
 		// unlock the resource once everyone's finished
 		if (thd_id == pthread_self()) {  // only the one who locked can unlock
-			// wait for the rest to finish
-			while (num_lectores > 0) {  // sleep
+			
+			while (num_lectores > 0) {  // wait for the rest to finish
 				pthread_cond_wait(&cond_first, &mutex_lectores);
 			}
-			printf("Ultimo %lu \n", thd_id);
+			printf("Ultimo %lu \n", (unsigned long int) pthread_self());
 			if (pthread_mutex_unlock(&mutex_recurso) != 0) {
 				printf("________________ Error en unlock\n");
 			}
