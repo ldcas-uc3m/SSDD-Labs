@@ -16,6 +16,7 @@ bool fin = false;  // signals end of file
 
 // sync
 pthread_mutex_t mutex;
+pthread_mutex_t mutex_fin;
 pthread_cond_t lleno;  // signals the buffer is full
 pthread_cond_t vacio;  // signals the buffer is empty
 
@@ -45,7 +46,13 @@ void productor(int* f) {
 		pthread_mutex_unlock(&mutex);
 	}
 	
+	pthread_mutex_lock(&mutex_fin);
+	
 	fin = true;
+	
+	pthread_cond_signal(&vacio);
+	pthread_mutex_unlock(&mutex_fin);
+	
 	pthread_exit(NULL);
 
 }
@@ -79,9 +86,14 @@ void consumidor(int* f) {
 			pthread_cond_signal(&lleno);
 		}
 
+		pthread_mutex_lock(&mutex_fin);
+		if (fin) {
+			pthread_mutex_unlock(&mutex);
+			break;
+		}
+		pthread_mutex_unlock(&mutex_fin);
+
 		pthread_mutex_unlock(&mutex);
-		
-		if (fin) break;
 	}
 
 	pthread_exit(NULL);
@@ -91,7 +103,7 @@ void consumidor(int* f) {
 int main(int argc, char* argv[]) {
 	pthread_attr_t attr;
 	pthread_t thid[2];
-	
+
 	int fe, fs;
 
 	// check arguments
@@ -116,6 +128,7 @@ int main(int argc, char* argv[]) {
 
 	// init mutex and cond
 	pthread_mutex_init(&mutex, NULL);
+	pthread_mutex_init(&mutex_fin, NULL);
 	pthread_cond_init(&lleno, NULL);
 	pthread_cond_init(&vacio, NULL);
 
@@ -140,6 +153,7 @@ int main(int argc, char* argv[]) {
 	pthread_cond_destroy(&lleno);
 	pthread_cond_destroy(&vacio);
 	pthread_mutex_destroy(&mutex);
+	pthread_mutex_destroy(&mutex_fin);
 	
 	close(fe);
 	close(fs);
