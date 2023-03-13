@@ -128,14 +128,14 @@ int main(int argc, char* argv[]) {
 
 	// create readers
 	for (j = 0; j < NUM_LECTORES; j++) {
-		if (pthread_create(&thid[j], NULL, (void *) lector, NULL) == -1) {
+		if (pthread_create(&thid[j], NULL, (void*) lector, NULL) == -1) {
 			printf("Error al crear los threads lectores\n");
 			exit(0);
 		}
 	}
 
 	// create writer
-	if (pthread_create(&thid[j], NULL, (void *) escritor, NULL) == -1) {
+	if (pthread_create(&thid[j], NULL, (void*) escritor, NULL) == -1) {
 		printf("Error al crear el escritor\n");
 		exit(0);
 	}
