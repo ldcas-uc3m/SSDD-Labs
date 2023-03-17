@@ -9,7 +9,6 @@
 #include "lines.h"
 
 
-
 int main(int argc, char *argv[]) {
 
     int sd;
@@ -51,15 +50,16 @@ int main(int argc, char *argv[]) {
     // main loop
     while (true) {
         readLine(STDIN_FILENO, buff, MAX_LINE);
+        sendMessage(sd, buff, strlen(buff) + 1);
+        
         if (strcmp(buff, "EXIT") == 0) break;
 
-        sendMessage(sd, buff, strlen(buff) + 1);
 
         // print echo
         listen(sd, SOMAXCONN);  // open socket
 
         readLine(sd, buff, MAX_LINE);
-        printf("%s\n", buff);
+        printf(":%s\n", buff);
         
     }
 

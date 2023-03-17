@@ -1,5 +1,6 @@
 # Laboratorio 3: Sockets
 
+
 ## Introducción
 Muchas aplicaciones que utilizan sockets emplean protocolos de aplicación que se basan en enviar cadenas de caracteres entre procesos clientes y servidores. Cualquier dato se codifica en una cadena de caracteres y está se envía como petición y respuesta. Suele ser habitual que estas cadenas de caracteres se representen como un conjunto de caracteres que finalizan con el código ASCII 0 (8 bis a 0), el cual sirve como delimitador de la cadena, de igual forma que ocurre en lenguajes de programación como C. En otras ocasiones la cadena de caracteres finaliza con el código ASCII de salto de línea (‘\n’), en este caso el protocolo está orientado al envío y recepción de líneas.
 El objetivo de este laboratorio, que se realizará durante dos sesiones, es realizar pequeñas aplicaciones con sockets TCP que utilizan cadenas de caracteres como datos a intercambiar en el proceso de comunicación. En aula global se dispone del material de apoyo para el este laboratorio. El material incluye los siguientes archivos:
@@ -63,8 +64,10 @@ int main(int argc, char **argv)
 }
 ```
 
+
 ## Ejercicio 1
 El objetivo de la primera parte del laboratorio consiste en programar un cliente ([`client.c`](client.c)) y un servidor ([`server.c`](server.c)) utilizando sockets de tipo stream en C. El cliente y el servidor se envían cadenas de caracteres finalizadas con el código ASCII `'\0'`; Se proporcionan los archivos [`client.c`](client.c) y [`server.c`](server.c) que se utilizarán como base para desarrollar estos programas. Utilice y modifique los archivos [`client.c`](client.c) y [`server.c`](server.c) proporcionados como material de apoyo.  
+
 El cliente realizará las siguientes acciones:
 1. El cliente recibe como argumento en la línea de mandatos la dirección y el puerto del servidor. Para probarlo de forma local con un servidor ejecutando en el puerto 2000, puede invocar al cliente de esta forma:
     ```bash
@@ -87,8 +90,12 @@ Y en otra terminal el cliente:
 ./client localhost 2000
 ```
 
+
 ## Ejercicio 2
-En el código desarrollado en el [ejercicio 1](#ejercicio-1), el servidor solo puede atender a un cliente. Mientras está en el bucle dialogando con el cliente, no ejecuta la llamada `accept()` y, por tanto, no podrá atender a otros clientes. El objetivo de la segunda parte es convertir el código del servidor en concurrente utilizando procesos ligeros. De esta forma el servidor podrá dialogar simultáneamente con varios clientes.
+En el código desarrollado en el [ejercicio 1](#ejercicio-1), el servidor solo puede atender a un cliente. Mientras está en el bucle dialogando con el cliente, no ejecuta la llamada `accept()` y, por tanto, no podrá atender a otros clientes. El objetivo de la segunda parte es convertir el código del servidor en concurrente utilizando procesos ligeros. De esta forma el servidor podrá dialogar simultáneamente con varios clientes.  
+
+El nombre del nuevo servidor será [`server_concurrent.c`](server_concurrent.c).
+
 
 ## Ejercicio 3
 En la primera parte de la segunda sesión de laboratorio se realizará la implementación de un cliente en Python que utilizará el servidor previamente implementado. La forma de enviar un string a través de un socket TCP es la siguiente:

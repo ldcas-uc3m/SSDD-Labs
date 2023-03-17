@@ -1,4 +1,4 @@
-BIN_FILES = test client server
+BIN_FILES = test client server server_concurrent
 
 CC = gcc
 
@@ -18,6 +18,9 @@ client: client.o lines.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LDLIBS) -o $@
 
 server: server.o lines.o
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LDLIBS) -o $@
+
+server_concurrent: server_concurrent.o lines.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ $(LDLIBS) -o $@
 
 %.o: %.c

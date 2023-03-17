@@ -12,6 +12,9 @@ Command line arguments, dynamic arrays (also of strings), libraries and linked l
 
 ### Lab 2: Concurrency
 Threads, syncronization with mutex and conditional variables, producer-consumer problem and readers-writers problem.  
+
+### Lab 3: Sockets
+Client-server implementation with sockets.   
 Both in C and Python.
 
 
