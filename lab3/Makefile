@@ -1,9 +1,8 @@
-BIN_FILES  = test client server
+BIN_FILES = test client server
 
 CC = gcc
 
-
-CFLAGS =	-Wall  -g
+CFLAGS = -Wall -g
 
 LDFLAGS = -L$(INSTALL_PATH)/lib/
 LDLIBS = -lpthread

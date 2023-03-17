@@ -55,9 +55,13 @@ int main(int argc, char *argv[]) {
 
         sendMessage(sd, buff, strlen(buff) + 1);
 
-        // TODO: print echo
-    }
+        // print echo
+        listen(sd, SOMAXCONN);  // open socket
 
+        readLine(sd, buff, MAX_LINE);
+        printf("%s\n", buff);
+        
+    }
 
     close (sd);
 

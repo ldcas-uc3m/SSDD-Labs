@@ -68,13 +68,24 @@ El objetivo de la primera parte del laboratorio consiste en programar un cliente
 El cliente realizará las siguientes acciones:
 1. El cliente recibe como argumento en la línea de mandatos la dirección y el puerto del servidor. Para probarlo de forma local con un servidor ejecutando en el puerto 2000, puede invocar al cliente de esta forma:
     ```bash
-    ./cliente localhost 2000
+    ./client localhost 2000
     ```
 2. Se conecta con el servidor arrancado en la dirección y puerto pasados como argumentos.
 3. Una vez conectado, ejecuta un bucle infinito. En cada iteración lee de la entrada estándar una cadena utilizando la función `readLine()` y la envía al servidor utilizando `sendMessage()`. A continuación, recibe del servidor la misma cadena utilizando `readLine()` y la imprimirá por pantalla utilizando `printf()`. Cuando el usuario teclee `EXIT`, la cadena se enviará al servidor, se recibirá la respuesta, que se mostrará por pantalla, y el cliente saldrá del bucle, cerrará la conexión y finalizará la ejecución.
 
 Observe que el cliente utiliza la función readLine para leer de la entrada estándar y del socket. Lo único que cambia es el descriptor pasado como argumento. En el primer caso utiliza el descriptor `0` asociado a la entrada estándar y en el segundo el descriptor asociado al socket.  
-El servidor (en esta primera tarea será secuencial) acepta una conexión de un cliente y entrará en un bucle en el que recibirá una cadena del cliente (`readLine()`) y le devolverá la misma cadena de vuelta al cliente (`sendMessage()`). Del bucle se saldrá cuando se reciba del cliente la cadena `EXIT`. A continuación, el servidor volverá a ejecutar la llamada `accept()` para aceptar la conexión de otro cliente. El servidor recibe el puerto en el que tiene que aceptar las conexiones como argumento en la línea de mandatos.
+El servidor (en esta primera tarea será secuencial) acepta una conexión de un cliente y entrará en un bucle en el que recibirá una cadena del cliente (`readLine()`) y le devolverá la misma cadena de vuelta al cliente (`sendMessage()`). Del bucle se saldrá cuando se reciba del cliente la cadena `EXIT`. A continuación, el servidor volverá a ejecutar la llamada `accept()` para aceptar la conexión de otro cliente. El servidor recibe el puerto en el que tiene que aceptar las conexiones como argumento en la línea de mandatos.  
+
+### Ejecución
+
+Para ejecutar el código corre en una terminal el servidor:
+```bash
+./server 2000
+```
+Y en otra terminal el cliente:
+```bash
+./client localhost 2000
+```
 
 ## Ejercicio 2
 En el código desarrollado en el [ejercicio 1](#ejercicio-1), el servidor solo puede atender a un cliente. Mientras está en el bucle dialogando con el cliente, no ejecuta la llamada `accept()` y, por tanto, no podrá atender a otros clientes. El objetivo de la segunda parte es convertir el código del servidor en concurrente utilizando procesos ligeros. De esta forma el servidor podrá dialogar simultáneamente con varios clientes.

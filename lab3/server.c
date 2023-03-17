@@ -10,14 +10,16 @@
 
 #include "lines.h"
 
-#define PORT 2000
-
 
 int main(int argc, char* argv[]) {
 	int sd, newsd;
     socklen_t size;
     struct sockaddr_in server_addr, client_addr;
 
+    if (argc != 2) {
+        printf("Usage: server <serverPort>\n");
+        exit(0);
+    }
 
     // configure socket
     if ((sd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0) {
@@ -33,7 +35,7 @@ int main(int argc, char* argv[]) {
     
     bzero((char*) &server_addr, sizeof(server_addr));
     server_addr.sin_family = AF_INET;
-    server_addr.sin_port = htons(PORT);
+    server_addr.sin_port = htons(atoi(argv[1]));
     server_addr.sin_addr.s_addr = INADDR_ANY;
 
 
@@ -55,21 +57,20 @@ int main(int argc, char* argv[]) {
             perror("Error in accept\n");
             return -1;
         }
+
         while (true) {
             // read lines
             readLine(newsd, buff, MAX_LINE);
-            printf("%s", buff);
             if (strcmp(buff, "EXIT") == 0) break;
+            printf("%s\n", buff);
 
             // echo
             sendMessage(newsd, buff, strlen(buff) + 1);
 
-            close(newsd);
-
-            // TODO: fix infinite loop
         }
-    }
 
+        close(newsd);
+    }
 
 
     close (sd);
