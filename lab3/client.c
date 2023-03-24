@@ -1,3 +1,7 @@
+/*
+Cliente de envio de mensajes básico con sockets TCP
+*/
+
 #include <netdb.h>
 #include <stdio.h>
 #include <string.h>
@@ -16,7 +20,7 @@ int main(int argc, char *argv[]) {
     struct hostent *hp;
 
     if (argc != 3) {
-        printf("Usage: client <serverAddress> <serverPort>\n");
+        printf("Usage: %s <serverAddress> <serverPort>\n", argv[0]);
         exit(0);
     }
 

@@ -83,10 +83,12 @@ El servidor (en esta primera tarea será secuencial) acepta una conexión de un 
 
 Para ejecutar el código corre en una terminal el servidor:
 ```bash
+make server
 ./server 2000
 ```
 Y en otra terminal el cliente:
 ```bash
+make client
 ./client localhost 2000
 ```
 
@@ -119,5 +121,22 @@ def readString(sock):
     return(a)
 ```
 
+Para ejecutarlo asegúrate de que el servidor está corriendo:
+```bash
+make server
+./server 2000
+```
+Y ejecuta el cliente de Python:
+```bash
+python3 client.py localhost 2000
+```
+
 ## Ejercicio 4
 Escriba un programa servidor en Python ([`server.py`](server.py)) con la misma funcionalidad que el desarrollado en C en la primera sesión de laboratorio. Prueba el servidor desarrollador con el cliente C y el cliente Python.
+
+Para ejecutarlo:
+```bash
+python3 server.py 2000
+```
+
+Al tratarse de sockets TCP, se pueden usar tanto el servidor de Python con el cliente de C como el servidor de C con el cliente de Python, como el servidor de Python con el cliente de Python.

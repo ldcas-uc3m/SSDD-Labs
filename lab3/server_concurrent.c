@@ -1,3 +1,7 @@
+/*
+Servidor de echo concurrente con sockets TCP
+*/
+
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -59,8 +63,9 @@ int main(int argc, char* argv[]) {
     socklen_t size;
     struct sockaddr_in server_addr, client_addr;
 
+    // arguments
     if (argc != 2) {
-        printf("Usage: server <serverPort>\n");
+        printf("Usage: %s <serverPort>\n", argv[0]);
         exit(0);
     }
 
