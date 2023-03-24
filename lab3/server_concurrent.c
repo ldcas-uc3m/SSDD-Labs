@@ -24,7 +24,7 @@ pthread_mutex_t mutex_stdout;  // mutex for stdout
 void* treat_petition(int* sd) {
 
     char buff[MAX_LINE];
-    unsigned long int tid = (unsigned long int) pthread_self();
+    // unsigned long int tid = (unsigned long int) pthread_self();
 
     // copy sd
     pthread_mutex_lock(&mutex_sd);
@@ -38,8 +38,11 @@ void* treat_petition(int* sd) {
     while (true) {
         // read lines
         readLine(local_sd, buff, MAX_LINE);
-        if (strcmp(buff, "EXIT") == 0) break;
-        printf("%ld: %s\n", tid, buff);
+        if (strcmp(buff, "EXIT\0") == 0) {
+            printf("Client %i disconnected\n", local_sd);
+            break;
+        }
+        printf("Client %i: %s\n", local_sd, buff);
 
         // echo
         sendMessage(local_sd, buff, strlen(buff) + 1);
@@ -109,6 +112,7 @@ int main(int argc, char* argv[]) {
             perror("Error in accept\n");
             return -1;
         }
+        printf("Client %i connected", newsd);
 
         // create thread
         if (pthread_create(&thid, &t_attr, (void*) treat_petition, (void*) &newsd) == 0) {  // wait to copy petition

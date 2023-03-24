@@ -58,11 +58,16 @@ int main(int argc, char* argv[]) {
             return -1;
         }
 
+        printf("Client connected\n");
+
         while (true) {
             // read lines
             readLine(newsd, buff, MAX_LINE);
-            if (strcmp(buff, "EXIT") == 0) break;
-            printf("%s\n", buff);
+            if (strcmp(buff, "EXIT\0") == 0) {
+                printf("Client disconnected\n");
+                break;
+            }
+            printf("Client: %s\n", buff);
 
             // echo
             sendMessage(newsd, buff, strlen(buff) + 1);

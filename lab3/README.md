@@ -98,7 +98,9 @@ El nombre del nuevo servidor será [`server_concurrent.c`](server_concurrent.c).
 
 
 ## Ejercicio 3
-En la primera parte de la segunda sesión de laboratorio se realizará la implementación de un cliente en Python que utilizará el servidor previamente implementado. La forma de enviar un string a través de un socket TCP es la siguiente:
+En la primera parte de la segunda sesión de laboratorio se realizará la implementación de un cliente en Python ([`client.py`](client.py)) que utilizará el servidor previamente implementado.  
+
+La forma de enviar un string a través de un socket TCP es la siguiente:
 ```python
 message = "Cadena a enviar"
 message = message + "\0"
@@ -108,13 +110,13 @@ connection.sendall(message.encode())
 La siguiente función se puede utilizar para leer un string de un socket:
 ```python
 def readString(sock):
- a = ''
- while True:
- msg = sock.recv(1)
- if (msg == b'\0'):
- break;
- a += msg.decode()
- return(a)
+    a = ''
+    while True:
+        msg = sock.recv(1)
+        if (msg == b'\0'):
+            break;
+        a += msg.decode()
+    return(a)
 ```
 
 ## Ejercicio 4

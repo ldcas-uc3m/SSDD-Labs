@@ -45,6 +45,8 @@ int main(int argc, char *argv[]) {
         return -1;
     }
 
+    printf("Connected to %s port %s\n", argv[1], argv[2]);
+
     char buff[MAX_LINE];
 
     // main loop
@@ -54,12 +56,11 @@ int main(int argc, char *argv[]) {
         
         if (strcmp(buff, "EXIT") == 0) break;
 
-
         // print echo
-        listen(sd, SOMAXCONN);  // open socket
+        listen(sd, SOMAXCONN);  // listen on socket
 
         readLine(sd, buff, MAX_LINE);
-        printf(":%s\n", buff);
+        printf("Server: %s\n", buff);
         
     }
 
