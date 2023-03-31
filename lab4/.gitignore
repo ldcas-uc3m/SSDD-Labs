@@ -1,0 +1,7 @@
+# exclude all executable files
+*
+!*.*
+!*/
+!Makefile
+
+*.o
