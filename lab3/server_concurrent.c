@@ -137,8 +137,12 @@ int main(int argc, char* argv[]) {
         }
 
     }
-
+	
+	// cleanup
     close (sd);
+	pthread_cond_destroy(&c_sd);
+	pthread_mutex_destroy(&mutex_sd);
+	
     return(0);
 }
 
