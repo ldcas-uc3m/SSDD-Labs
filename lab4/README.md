@@ -24,23 +24,26 @@ struct tm {
     int tm_isdst; /* daylight saving time */
 };
 ```
-```c
 El siguiente programa muestra un ejemplo de uso:
+```c
 #include <stdio.h>
 #include <time.h>
 
 int main () {
     time_t rawtime;
-    struct tm *info;
-    time( &rawtime );
-    info = localtime( &rawtime );
+    struct tm* info;
+
+    time(&rawtime);
+    info = localtime(&rawtime);
+
     printf("Seconds: %d", info.tm_sec);
+
     return(0);
 }
 ```
 
 # Ejercicio 2
-El objetivo de este segundo ejercicio es desarrollar, utilizando RPC, un cliente ((`echo_client`)[echo_client]) y un servidor ((`echo_server`)[echo_server]) con la misma funcionalidad del servidor desarrollado en el laboratorio 3 ((`lab3`)[lab3]) de sockets. La funcionalidad del cliente es la siguiente:
+El objetivo de este segundo ejercicio es desarrollar, utilizando RPC, un cliente ([`echo_client`](echo_client)) y un servidor ([`echo_server`](echo_server)) con la misma funcionalidad del servidor desarrollado en el laboratorio 3 ([`lab3/`](lab3)) de sockets. La funcionalidad del cliente es la siguiente:
 1. El cliente recibe como argumento en la línea de mandatos la dirección del servidor. Para probarlo con un servidor RPC previamente arrancado, puede invocar al cliente de esta forma:
     ```bash
     ./echo_client localhost 
@@ -91,7 +94,7 @@ Para desarrollar este ejercicio en primer lugar tendrá que definir la interfaz 
     ```
 
 ## Instalación y ejecución
-Primero instala los paquetes de RPC. En Ubuntu:
+Primero instala los paquetes de RPC en Ubuntu:
 ```bash
 sudo apt install libtirpc-common libtirpc-dev libtirpc3 rpcsvc-proto rpcbind 
 ```

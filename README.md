@@ -14,8 +14,11 @@ Command line arguments, dynamic arrays (also of strings), libraries and linked l
 Threads, syncronization with mutex and conditional variables, producer-consumer problem and readers-writers problem.  
 
 ### Lab 3: Sockets
-Client-server implementation with sockets.   
+Client-server echo implementation with sockets.   
 Both in C and Python.
+
+### Lab 4: RPC
+Client-server echo implementation with RPCs.
 
 
 ## Execution
