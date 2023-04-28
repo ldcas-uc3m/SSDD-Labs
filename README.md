@@ -20,19 +20,5 @@ Both in C and Python.
 ### Lab 4: RPC
 Client-server echo implementation with RPCs.
 
-
-## Execution
-To compile the labs, use Make. E.g:
-```bash
-cd lab1/
-make
-```
-And then execute the corresponding executable.
-```bash
-./p1
-```
-
-You can clean up with:
-```bash
-make clean
-```
+### Lab 5: Web services
+Web service client, plus server examples, in Python.
