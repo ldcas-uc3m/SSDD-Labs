@@ -8,17 +8,17 @@ Universidad Carlos III de Madrid
 ## Labs summary
 
 ### Lab 1: Introduction to C
-Command line arguments, dynamic arrays (also of strings), libraries and linked lists.
+Command line arguments, dynamic arrays (also of strings), libraries and linked lists, in C.
 
 ### Lab 2: Concurrency
-Threads, syncronization with mutex and conditional variables, producer-consumer problem and readers-writers problem.  
+Threads, syncronization with mutex and conditional variables, producer-consumer problem and readers-writers problem, in C.
 
 ### Lab 3: Sockets
 Client-server echo implementation with sockets.   
 Both in C and Python.
 
 ### Lab 4: RPC
-Client-server echo implementation with RPCs.
+Client-server echo implementation with RPCs, in C.
 
 ### Lab 5: Web services
-Web service client, plus server examples, in Python.
+Web service creation and client use in Python.
