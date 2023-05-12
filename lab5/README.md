@@ -3,7 +3,7 @@ El objetivo de este laboratorio es familiarizar al alumno/a con el consumo de se
 
 El objetivo es desarrollar un programa en Python que permita utilizar el servicio de conversión de temperaturas que se encuentra disponible en: [w3schools.com/xml/tempconvert.asmx](https://www.w3schools.com/xml/tempconvert.asmx).  
 
-Puedes encontrar ejemplos en [`WS-python/`](WS-python).
+Puedes encontrar un ejemplo de creación de servicio web (y cliente) en [`ws-calc/`](ws-calc).
 
 
 ## Instalación y ejecución
@@ -15,5 +15,5 @@ pip3 install zeep
 
 Execute as regular:
 ```bash
-python3 main.py
+python3 ws-tempconvert-client.py
 ```
